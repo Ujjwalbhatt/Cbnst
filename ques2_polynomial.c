@@ -1,8 +1,5 @@
 #include<stdio.h>
 #include<math.h>
-
-
-
 int main()
 {
     char function[10];

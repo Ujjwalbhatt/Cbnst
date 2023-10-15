@@ -9,7 +9,6 @@ void printMatrix(float a[N][N+1]) {
         printf("\n");
     }
 }
-
 void gaussJordan(float a[N][N+1]) {
     for (int i = 0; i < N; i++) {
         // Make the diagonal contain all ones

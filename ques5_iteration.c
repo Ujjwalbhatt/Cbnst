@@ -3,24 +3,24 @@
 #include<stdlib.h>
 #include<stdbool.h>
 
-float p(float x){
-    return (cos(x) - 1)/3;
-}
 
 float f(float x){
     return cos(x) - 3*x - 1;
 }
 
+float p(float x){
+    return (cos(x) - 1)/3;
+}
 int main(){
 	float x0 , x1 ,error;
-	int itr = 1;
+	int itr = 0;
 	printf("Enter Initial value : ");
 	scanf("%f" , &x0);
 	printf("Enter allowed error : ");
 	scanf("%f",&error);
 	do{
-		x1 = p(x0);
 		itr++;
+		x1 = p(x0);
 		printf("Iteration %d ,value of x1 is %f and f(x1) is %f\n",itr,x1,f(x1));
 		if(itr > 100){
 			printf("Not Convergent\n");

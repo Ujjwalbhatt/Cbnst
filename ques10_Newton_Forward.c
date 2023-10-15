@@ -11,55 +11,42 @@
 #include<math.h>
 
 int main(){
-
-    int n,i,j;
-    printf("Enter the no. of observation\n");
-    scanf("%d",&n);
-
-    float x[n],y[n][n],x0,h,p,u,sum=0;
-    printf("Enter the value of x\n");
-
-    for(i=0;i<n;i++){
-        scanf("%f",&x[i]);
+    int n;
+    float x;
+    printf("Enter the number of the rows: ");
+    scanf("%d", &n);
+    printf("Enter the value of x: ");
+    scanf("%f", &x);
+    float a[100][100];
+    for(int i =0 ;i<n;i++){
+    scanf("%f",&a[i][0]);
     }
-
-
-    printf("Enter the value of y\n");
-
-    for(i=0;i<n;i++){
-        scanf("%f",&y[i][0]);
+    for(int i =0 ;i<n;i++){
+    scanf("%f",&a[i][1]);
     }
-
-    printf("Enter the value of x0\n");
-
-    scanf("%f",&x0);
-
-    h=x[1]-x[0];
-
-    p=(x0-x[0])/h;
-
-    for(i=1;i<n;i++){
-        for(j=0;j<n-i;j++){
-            y[j][i]=y[j+1][i-1]-y[j][i-1];
+    for(int j = 2 ; j<=n;j++){
+        for(int i = 0;i<n-j+1;i++ ){
+            a[i][j] =  a[i+1][j-1] - a[i][j-1];
         }
     }
-
-    printf("Newton forward Difference table\n");
-
-    for(i=0;i<n;i++){
-        printf("%0.2f\t",x[i]);
-        for(j=0;j<n-i;j++){
-            printf("%0.2f\t",y[i][j]);
+    for(int i = 0;i<n;i++){
+        for (int j = 0; j <= n-i; j++)
+        {   
+            printf("%f ",a[i][j]);
+            
         }
         printf("\n");
+        
     }
-    u=p;
-    sum=y[0][0];
-    for(i=1;i<n;i++){
-        sum=sum+(u*y[0][i])/tgamma(i+1);
-        u=u*(p-i);
+    float u = (x - a[0][0])/(a[1][0]-a[0][0]);
+    float u1 = u;
+    float y = a[0][1];
+    float fact = 1;
+    for(int i = 2;i<=n;i++){
+         y = y+(u1*a[0][i])/fact;
+         fact  = fact*i;
+         u1 = u1*(u-(i-1));
     }
-    printf("Apply Newton forward Interpolation Formula\n");
-    printf("When x=%0.2f, y=%0.2f\n",x0,sum);
+    printf("The final value for f(%f) will be %f", x,y);
     return 0;
 }

@@ -2,7 +2,7 @@
 #include<math.h>
 float f(float x)
 {
-    return (x*x*x)-5*x+1;
+    return (x*x*x)+(2*x*x)+x-1;
 }
 int main()
 {
@@ -30,14 +30,14 @@ int main()
     while(1)
     {
         itr++;
-        float x2=x0-((((x1-x0)/(f(x1)-f(x0))))*f(x0));
+        float x2=(x0*f(x1) - x1*f(x0))/(f(x1)-f(x0));
         float ans = f(x2);
-        printf("%d Iteration, value of x = %f, value of (%f) is %f \n",itr,x2,x2,ans);
+        printf("%d Iteration, value of x2 = %f, value of f(%f) is %f \n",itr,x2,x2,ans);
         if(fabs(ans)<err)
         {
             break;
         }
-        else if(f(x0)*f(x2)<0)
+        else if((f(x0)*f(x2))<0)
         {
             x1=x2;
         }

@@ -6,7 +6,7 @@ float f(float x)
 }
 float fd(float x)
 {
-    return  3+sin(x);
+    return  3-sin(x);
 }
 int main()
 {
@@ -34,15 +34,13 @@ int main()
          x1 = x0 - (f(x0)/fd(x0));
          if(fabs(x1-x0)<=err)
          {
-            printf("Value of function after %d iterations is %f:\n",itr,x1);
+            printf("value of x%d is %f\n",itr,x1);
             break;
          }
          else 
          {
-            printf("Value after %d iteration is %f\n",itr,x1);
+            printf("value of x%d is %f\n",itr,x1);
             x0=x1;
          }
     }
-
-    
 }

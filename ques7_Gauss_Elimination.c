@@ -15,38 +15,38 @@ int main()
     int m, n;
     printf("Enter the number of variables");
     scanf("%d", &n);
-    printf("Enter the number of equations");
-    scanf("%d", &m);
     float a[n][n + 1];
     float x[n];
     float sum = 0;
     printf("Enter the coefficients of the equations");
-    for (int i = 0; i < m; i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n + 1; j++)
+        for (int j = 0; j <= n; j++)
         {
             scanf("%f", &a[i][j]);
         }
     }
-    for (int i = 0; i < m - 1; i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = i + 1; j < m; j++)
+        for (int j = 0; j < n; j++)
         {
-            float t = a[j][i] / a[i][i];
-            for (int k = 0; k < n + 1; k++) 
-            {
-                a[j][k] = a[j][k] - t * a[i][k];
-                // printf("%f ", a[j][k]);
-            }
-            
+                if(j>i){
+                    float ratio = a[j][i]/a[i][i];
+                    for (int k = 0; k <= n; k++)
+                    {
+                        a[j][k] = a[j][k] - (ratio*a[i][k]);
+                    }
+                    
+                }
         }
+        
     }
 
 //printing the upper triangular matrix
     printf("upper triangular matrix\n");
-    for (int i = 0; i < m; i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n + 1; j++)
+        for (int j = 0; j <= n; j++)
         {
             printf("%f ", a[i][j]);
         }
