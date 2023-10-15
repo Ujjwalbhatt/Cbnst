@@ -1,50 +1,45 @@
-#include <stdio.h>
-#define N 3  // Assuming a 3x3 matrix 
+#include <stdio.h> 
+#include<math.h>
 
-void printMatrix(float a[N][N+1]) {
-    for (int i=0; i<N; i++) {
-        for (int j=0; j<=N; j++) {
+void printMatrix(int n,float a[n][n+1]) {
+    for (int i=0; i<n; i++) {
+        for (int j=0; j<=n; j++) {
             printf("%.2f ", a[i][j]);
         }
         printf("\n");
     }
 }
-void gaussJordan(float a[N][N+1]) {
-    for (int i = 0; i < N; i++) {
-        // Make the diagonal contain all ones
-        float div = a[i][i];
-        for (int j = 0; j <= N; j++) {
-            a[i][j] = a[i][j]/div;
-        }
 
-        // Make the other rows zero
-        for (int row = 0; row < N; row++) {
-            if (row != i) {
-                float factor = a[row][i];
-                for (int col = 0; col <= N; col++) {
-                    a[row][col] -= factor * a[i][col];
-                }
-            }
-        }
-    }
-}
 
 int main() {
+    int n;
+    printf("Enter the size of the matrix");
+    scanf("%d", &n);
    printf("Enter the coefficients of the equations\n");
-    float matrix[N][N+1];
-    for (int i=0; i<N; i++) {
-        for (int j=0; j<=N; j++) {
-            scanf("%f", &matrix[i][j]);
+    float a[n][n+1];
+    for (int i=0; i<n; i++) {
+        for (int j=0; j<=n; j++) {
+            scanf("%f", &a[i][j]);
         }
     }
+   
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n ; j++)
+        {
+           if(i!=j){
+                float ratio  = a[j][i] / a[i][i];
+                for (int k = 0; k <= n; k++)
+                {
+                    a[j][k] = a[j][k] - (ratio*a[i][k]);
+                }
+                
+           } 
+        }
 
-    printf("Original Matrix:\n");
-    printMatrix(matrix);
-
-    gaussJordan(matrix);
-
-    printf("\nAfter Gauss-Jordan Elimination:\n");
-    printMatrix(matrix);
-
+    }
+        printMatrix(n,a);
+    for(int i = 0;i<n;i++){
+            printf("%f\n",a[i][n]/a[i][i]);
+    }
     return 0;
 }

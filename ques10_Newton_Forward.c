@@ -43,7 +43,7 @@ int main(){
     float y = a[0][1];
     float fact = 1;
     for(int i = 2;i<=n;i++){
-         y = y+(u1*a[0][i])/fact;
+         y = y+((u1*a[0][i])/fact);
          fact  = fact*i;
          u1 = u1*(u-(i-1));
     }
