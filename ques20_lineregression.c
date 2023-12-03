@@ -4,7 +4,7 @@ int main()
  int n, i;
  float x[50], y[50], sumX=0, sumX2=0, sumY=0, sumXY=0, a, b;
  printf("How many data points?\n");
- scanf("%d", &n);
+ scanf("master%d", &n);
  printf("Enter data:\n");
  for(i=1;i<=n;i++)
  {
