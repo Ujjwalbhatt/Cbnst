@@ -18,7 +18,8 @@ int main()
     scanf("%d",&n);
     h=(b-a)/n;
     sum = f(a) +f(b);
- 
+    printf("\n%f\n",h);
+    printf("\n%f\n",sum);
     for(i=a+h;i<b;i=i+h)
     {
        if(position_of_term %2 ==0)

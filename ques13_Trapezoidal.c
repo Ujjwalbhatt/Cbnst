@@ -12,6 +12,7 @@ int main(){
     scanf("%d",&n);
     h = (b-a)/n;
     sum  = f(a) + f(b); 
+    printf("%f",h);
     for (float i = a+h; i < b; i=i+h)
     {
         sum = sum + 2*f(i);

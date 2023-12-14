@@ -18,7 +18,7 @@ int main()
           
     printf("Enter value of x for which you want y\n");
     scanf("%f",&x);
-    for(j=2;j<n+1;j++)
+    for(j=2;j<=n;j++)
     {
         for(i=0;i<n-j+1;i++)
             a[i][j] = a[i+1][j-1]-a[i][j-1];
